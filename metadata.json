@@ -1,0 +1,6 @@
+{
+  "name": "PromptAI - Unbreakable Command Generator",
+  "description": "Find the best AI prompts across GitHub, Reddit, and FlowGPT, plus AI synthesized unbreakable commands.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

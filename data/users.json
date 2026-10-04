@@ -1,0 +1,20 @@
+{
+  "user_punit_default": {
+    "id": "user_punit_default",
+    "name": "Punit Trainer",
+    "email": "punittrainer9997@gmail.com",
+    "passwordHash": "a6cee0a932d52c0ac6a179488beca72a56736288f94bc481c8282c247d75e57b788a6ae9af9a4affa3f573616ccf4d1a59e50b24db5c5ab85edee368c1d3a41f",
+    "salt": "aa572a342c611d543d1a452ec6eb6e4c",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocL7X8p9W1mQ0rZ",
+    "createdAt": 1790935472711
+  },
+  "user_1790935486919_8eb48b2e": {
+    "id": "user_1790935486919_8eb48b2e",
+    "name": "Alex Rivers",
+    "email": "alex@example.com",
+    "passwordHash": "b47bb71f184f9ba8d7c570a487ad7153913b03b3ad377827e66e0b161133f31087b8877118d9cd42f1c6382c748937a247457390a572774b4aeb8689422c53db",
+    "salt": "fa17d728a1dfc7fb8be4c1cbeafd4d25",
+    "avatarUrl": "https://api.dicebear.com/7.x/identicon/svg?seed=alex%40example.com",
+    "createdAt": 1790935486919
+  }
+}

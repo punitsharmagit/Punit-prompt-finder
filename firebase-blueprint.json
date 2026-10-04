@@ -1,0 +1,123 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile tied to Firebase Authentication",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier matching request.auth.uid"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User email address"
+        },
+        "name": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "User avatar photo URL"
+        },
+        "tier": {
+          "type": "string",
+          "enum": ["FREE", "PRO", "ENTERPRISE"],
+          "description": "User subscription tier"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Timestamp when account was created"
+        },
+        "updatedAt": {
+          "type": "number",
+          "description": "Timestamp when profile was last updated"
+        }
+      },
+      "required": ["id", "email", "name", "createdAt"]
+    },
+    "ChatSession": {
+      "title": "ChatSession",
+      "description": "Prompt search chat session synced to cloud",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique chat session ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the chat session",
+          "maxLength": 200
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Timestamp when chat was initiated"
+        },
+        "updatedAt": {
+          "type": "number",
+          "description": "Timestamp of latest activity"
+        },
+        "isIncognito": {
+          "type": "boolean",
+          "description": "Whether this chat was created in incognito mode"
+        },
+        "isPinned": {
+          "type": "boolean",
+          "description": "Whether this chat is pinned to top"
+        },
+        "folderId": {
+          "type": "string",
+          "description": "Optional ID of folder this chat belongs to"
+        }
+      },
+      "required": ["id", "title", "createdAt", "updatedAt"]
+    },
+    "Folder": {
+      "title": "Folder",
+      "description": "Organized prompt collection folder",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique folder identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the folder",
+          "maxLength": 100
+        },
+        "color": {
+          "type": "string",
+          "description": "Color tag for the folder"
+        },
+        "folderInstruction": {
+          "type": "string",
+          "description": "Folder-level system prompt instructions",
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Timestamp when folder was created"
+        }
+      },
+      "required": ["id", "name", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile document owned strictly by userId"
+    },
+    "/users/{userId}/chats/{chatId}": {
+      "schema": "ChatSession",
+      "description": "Chat sessions belonging exclusively to userId"
+    },
+    "/users/{userId}/folders/{folderId}": {
+      "schema": "Folder",
+      "description": "Prompt collection folders belonging exclusively to userId"
+    }
+  }
+}

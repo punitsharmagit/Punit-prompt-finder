@@ -1,0 +1,93 @@
+{
+  "totalUsed": 18439,
+  "quota": 100000,
+  "perModel": {
+    "geminiFlash": 11251,
+    "synthesizer": 5487,
+    "playgroundValidator": 1701
+  },
+  "resetDate": "2026-11-01T00:00:00.000Z",
+  "history": [
+    {
+      "id": "tok_1791022995720_8z6r",
+      "timestamp": 1791022995720,
+      "operation": "search_synthesis",
+      "operationLabel": "Prompt Synthesis & Multi-Source Search",
+      "tokens": 121,
+      "model": "synthesizer",
+      "modelLabel": "PromptAI Synthesizer Engine"
+    },
+    {
+      "id": "tok_1791022995720_epy4",
+      "timestamp": 1791022995720,
+      "operation": "search_synthesis",
+      "operationLabel": "Prompt Synthesis & Multi-Source Search",
+      "tokens": 182,
+      "model": "geminiFlash",
+      "modelLabel": "Gemini 3.8 Flash"
+    },
+    {
+      "id": "tok_1791022351648_00qs",
+      "timestamp": 1791022351648,
+      "operation": "search_synthesis",
+      "operationLabel": "Prompt Synthesis & Multi-Source Search",
+      "tokens": 1246,
+      "model": "synthesizer",
+      "modelLabel": "PromptAI Synthesizer Engine"
+    },
+    {
+      "id": "tok_1791022351647_h1qg",
+      "timestamp": 1791022351647,
+      "operation": "search_synthesis",
+      "operationLabel": "Prompt Synthesis & Multi-Source Search",
+      "tokens": 1869,
+      "model": "geminiFlash",
+      "modelLabel": "Gemini 3.8 Flash"
+    },
+    {
+      "id": "tok_1791021372609_ylll",
+      "timestamp": 1791021372609,
+      "operation": "playground_evaluate",
+      "operationLabel": "Security Audit & Vulnerability Evaluation",
+      "tokens": 142,
+      "model": "playgroundValidator",
+      "modelLabel": "Playground Red-Team Validator"
+    },
+    {
+      "id": "tok_1791021353081_w55m",
+      "timestamp": 1791021353081,
+      "operation": "playground_run",
+      "operationLabel": "Playground Live Execution & Verification",
+      "tokens": 59,
+      "model": "playgroundValidator",
+      "modelLabel": "Playground Red-Team Validator"
+    },
+    {
+      "id": "tok_init_1",
+      "timestamp": 1791014137007,
+      "operation": "search_synthesis",
+      "operationLabel": "Search & Unbreakable Command Synthesis",
+      "tokens": 420,
+      "model": "synthesizer",
+      "modelLabel": "PromptAI Synthesizer Engine"
+    },
+    {
+      "id": "tok_init_2",
+      "timestamp": 1791003337007,
+      "operation": "search_synthesis",
+      "operationLabel": "Multi-Repository Prompt Retrieval",
+      "tokens": 650,
+      "model": "geminiFlash",
+      "modelLabel": "Gemini 3.8 Flash"
+    },
+    {
+      "id": "tok_init_3",
+      "timestamp": 1790978137007,
+      "operation": "playground_evaluate",
+      "operationLabel": "Red-Team Boundary & Adversarial Evaluation",
+      "tokens": 580,
+      "model": "playgroundValidator",
+      "modelLabel": "Playground Red-Team Validator"
+    }
+  ]
+}

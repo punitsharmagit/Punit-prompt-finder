@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Health-check / connection test document
+    match /test/{testId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // User profile document
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if isOwner(userId)
+                    && isValidId(userId)
+                    && request.resource.data.id == userId
+                    && request.resource.data.keys().hasAll(['id', 'email', 'name', 'createdAt'])
+                    && request.resource.data.keys().hasOnly(['id', 'email', 'name', 'avatarUrl', 'tier', 'createdAt', 'updatedAt']);
+      allow update: if isOwner(userId)
+                    && request.resource.data.id == userId
+                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'avatarUrl', 'tier', 'updatedAt']);
+      allow delete: if isOwner(userId);
+
+      // User's Cloud-Synced Chats
+      match /chats/{chatId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId)
+                      && isValidId(chatId)
+                      && request.resource.data.id == chatId
+                      && request.resource.data.keys().hasAll(['id', 'title', 'createdAt', 'updatedAt'])
+                      && request.resource.data.keys().hasOnly(['id', 'title', 'createdAt', 'updatedAt', 'isIncognito', 'isPinned', 'folderId']);
+        allow update: if isOwner(userId)
+                      && request.resource.data.id == chatId
+                      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['title', 'updatedAt', 'isIncognito', 'isPinned', 'folderId']);
+        allow delete: if isOwner(userId);
+      }
+
+      // User's Folders
+      match /folders/{folderId} {
+        allow get, list: if isOwner(userId);
+        allow create: if isOwner(userId)
+                      && isValidId(folderId)
+                      && request.resource.data.id == folderId
+                      && request.resource.data.keys().hasAll(['id', 'name', 'createdAt'])
+                      && request.resource.data.keys().hasOnly(['id', 'name', 'color', 'folderInstruction', 'createdAt']);
+        allow update: if isOwner(userId)
+                      && request.resource.data.id == folderId
+                      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'color', 'folderInstruction']);
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}
